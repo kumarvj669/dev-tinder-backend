@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
-const {generateToken, verifyToken, generateAccessTokenFromRefreshToken} = require("../utils/tokens");
+const { verifyToken, generateAccessTokenFromRefreshToken } = require("../utils/tokens");
 const Token = require("../models/tokens");
 const userAuth = async (req, res, next) => {
     try{
@@ -11,7 +11,7 @@ const userAuth = async (req, res, next) => {
             const {id} = await verifyToken(req.cookies.accessToken, "access")
             const user = await User.findById(id);
             if(!user){
-                res.status(401).send({"Success": false, "Message": "Unauthenticated request!"});
+                res.status(401).send({"Success": false, "Message": "Unauthenticated request"});
             }
             else{
                 req.user = user;

@@ -24,7 +24,14 @@ const validateLoginRequest = (req) => {
     }
 }
 
+const validateConnectionRequest = (req) => {
+    if(!req.body?.profile_id){
+        throw new Error("profile_id must be specifed")
+    }
+}
+
 module.exports = {
     validateSignupRequest,
-    validateLoginRequest
+    validateLoginRequest,
+    validateConnectionRequest
 }
