@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(userAuth);
 app.use(router);
 app.use((req, res) => {
-    res.status(404).send({"Success": false, "Message": "Not Found"});
+    res.status(404).send({"Success": false, "Message": "Endpoint Not Found"});
 });
 
 app.use("/", (err, req, res, next) => {
