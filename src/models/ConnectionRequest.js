@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 
 const connectionRequestSchema = mongoose.Schema({
     sender: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     receiver: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     status: {
         type: String,
         required: true,
-        enums: ["Pending", "Accepted", "Rejected"],
+        enum: ["Pending", "Accepted", "Rejected", "Ignored"],
         default: "Pending"
     }
 }, { timestamps: true});
