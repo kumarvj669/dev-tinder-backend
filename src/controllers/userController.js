@@ -42,7 +42,7 @@ const login = async (req, res) => {
             await tokenData.save();
             res.cookie("accessToken", tokenData.accessToken);
             res.cookie("refreshToken", tokenData.refreshToken);
-            res.send({"Success": true, "message": "User loggedin successfully"});
+            res.send({"Success": true, "Message": "User loggedin successfully", "Data": user});
         }
         else{
             res.status(401).send({"Success": false, "message": "Invalid credentials"})

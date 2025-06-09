@@ -11,7 +11,6 @@ const sendConnectionRequest = async (req, res) => {
                 {"sender": profileId._id, "receiver": user._id},
                 {"sender": user._id, "receiver": profileId._id}
             ]})
-            console.log("outgoing:", existingRequest)
             if(profileId._id == user._id){
                 res.send({"Success": true, "Message": "Connection request can't be sent to yourself"});
             }
@@ -40,7 +39,7 @@ const sendConnectionRequest = async (req, res) => {
 const getConnectionRequests = async (req, res) => {
     try{
         const user = req.user
-        const connectionRequests = await ConnectionRequest.find({"receiver": user._id})
+        const connectionRequests = await ConnectionRequest.find({"receiver": user._id, "status": "Pending"})
         res.send({ "Success" : true, "Message": "Conncetion request fetched successfully", "data": connectionRequests} )
     }
     catch(err){
